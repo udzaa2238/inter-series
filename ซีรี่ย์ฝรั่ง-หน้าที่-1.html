@@ -125,68 +125,75 @@ a:focus img{
 	display: inline-block;
 }
 
-/* เพิ่มสไตล์ใหม่สำหรับการจัดเรียงรายการ */
-.movie-container {
+/* สไตล์ใหม่สำหรับแก้ปัญหาการซ้อนทับ */
+.movies-row {
     display: flex;
     flex-wrap: wrap;
+    margin: 0 -5px; /* ชดเชย margin ให้รายการ */
     justify-content: flex-start;
-    margin: 0 -5px; /* ชดเชย padding ของรายการ */
+}
+
+.movie-col {
+    width: 20%; /* 5 รายการต่อแถว */
+    padding: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
 }
 
 .movie-item {
-    width: 20%;
-    padding: 5px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
 }
 
-.movie-box {
-    width: 100%;
-    position: relative;
-}
-
-.movie-image button {
-    width: 100%;
-    height: 250px;
+.movie-button {
+    width: 120px; /* ลดขนาดปุ่มลง */
+    height: 180px; /* ลดความสูงปุ่มลง */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     border: none;
-    border-radius: 2px;
+    border-radius: 4px;
     display: block;
+    margin: 0 auto;
+    cursor: pointer;
 }
 
-.movie-item center p {
-    margin-top: 5px;
+.movie-title {
+    margin-top: 8px;
     color: white;
-    font-size: 14px;
+    font-size: 13px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    padding: 0 5px;
 }
 
-/* สำหรับ responsive design */
+/* Responsive design */
 @media (max-width: 1200px) {
-    .movie-item {
-        width: 25%;
+    .movie-col {
+        width: 25%; /* 4 รายการต่อแถว */
     }
 }
 
 @media (max-width: 992px) {
-    .movie-item {
-        width: 33.33%;
+    .movie-col {
+        width: 33.33%; /* 3 รายการต่อแถว */
     }
 }
 
 @media (max-width: 768px) {
-    .movie-item {
-        width: 50%;
+    .movie-col {
+        width: 50%; /* 2 รายการต่อแถว */
     }
 }
 
 @media (max-width: 480px) {
-    .movie-item {
-        width: 100%;
+    .movie-col {
+        width: 100%; /* 1 รายการต่อแถว */
+    }
+    .movie-button {
+        width: 140px;
+        height: 200px;
     }
 }
 
@@ -316,106 +323,85 @@ $(document).ready(function(){
         <div class="col-lg-12 col-md-12 col-xs-12">
 
 <!-- เปลี่ยนโครงสร้างการแสดงผลรายการหนัง -->
-<div class="movie-container">
+<div class="movies-row">
     <!-- รายการที่ 1 -->
-    <div class="movie-item">
-        <div class="movie-box">
-            <div class="movie-image">
-                <button autofocus="" class="btn btn-default btn-block btn-lg" onclick="window.location.href='https://main.24playerhd.com/newplaylist/a26930cad32d04311f74e946/a26930cad32d04311f74e946.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);" type="button"></button>
-            </div>
+    <div class="movie-col">
+        <div class="movie-item">
+            <button class="movie-button" onclick="window.location.href='https://main.24playerhd.com/newplaylist/a26930cad32d04311f74e946/a26930cad32d04311f74e946.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);"></button>
+            <p class="movie-title">ตอนที่ EP6</p>
         </div>
-        <center><p>ตอนที่ EP6</p></center>
     </div>
     
     <!-- รายการที่ 2 -->
-    <div class="movie-item">
-        <div class="movie-box">
-            <div class="movie-image">
-                <button autofocus="" class="btn btn-default btn-block btn-lg" onclick="window.location.href='https://main.24playerhd.com/newplaylist/3cad74069b211b05cc03ad35/3cad74069b211b05cc03ad35.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);" type="button"></button>
-            </div>
+    <div class="movie-col">
+        <div class="movie-item">
+            <button class="movie-button" onclick="window.location.href='https://main.24playerhd.com/newplaylist/3cad74069b211b05cc03ad35/3cad74069b211b05cc03ad35.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);"></button>
+            <p class="movie-title">ตอนที่ EP5</p>
         </div>
-        <center><p>ตอนที่ EP5</p></center>
     </div>
     
     <!-- รายการที่ 3 -->
-    <div class="movie-item">
-        <div class="movie-box">
-            <div class="movie-image">
-                <button autofocus="" class="btn btn-default btn-block btn-lg" onclick="window.location.href='https://main.24playerhd.com/newplaylist/ad6fbe98e0c9d51c43a27797/ad6fbe98e0c9d51c43a27797.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);" type="button"></button>
-            </div>
+    <div class="movie-col">
+        <div class="movie-item">
+            <button class="movie-button" onclick="window.location.href='https://main.24playerhd.com/newplaylist/ad6fbe98e0c9d51c43a27797/ad6fbe98e0c9d51c43a27797.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);"></button>
+            <p class="movie-title">ตอนที่ EP4</p>
         </div>
-        <center><p>ตอนที่ EP4</p></center>
     </div>
     
     <!-- รายการที่ 4 -->
-    <div class="movie-item">
-        <div class="movie-box">
-            <div class="movie-image">
-                <button autofocus="" class="btn btn-default btn-block btn-lg" onclick="window.location.href='https://main.24playerhd.com/newplaylist/c0b976139b948c4a4abcde79/c0b976139b948c4a4abcde79.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);" type="button"></button>
-            </div>
+    <div class="movie-col">
+        <div class="movie-item">
+            <button class="movie-button" onclick="window.location.href='https://main.24playerhd.com/newplaylist/c0b976139b948c4a4abcde79/c0b976139b948c4a4abcde79.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);"></button>
+            <p class="movie-title">ตอนที่ EP3</p>
         </div>
-        <center><p>ตอนที่ EP3</p></center>
     </div>
     
     <!-- รายการที่ 5 -->
-    <div class="movie-item">
-        <div class="movie-box">
-            <div class="movie-image">
-                <button autofocus="" class="btn btn-default btn-block btn-lg" onclick="window.location.href='https://main.24playerhd.com/newplaylist/0e7d7280d35ee416d5550d10/0e7d7280d35ee416d5550d10.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);" type="button"></button>
-            </div>
+    <div class="movie-col">
+        <div class="movie-item">
+            <button class="movie-button" onclick="window.location.href='https://main.24playerhd.com/newplaylist/0e7d7280d35ee416d5550d10/0e7d7280d35ee416d5550d10.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);"></button>
+            <p class="movie-title">ตอนที่ EP2</p>
         </div>
-        <center><p>ตอนที่ EP2</p></center>
     </div>
     
-    <!-- เพิ่มรายการอื่นๆ ที่เหลือในรูปแบบเดียวกัน -->
     <!-- รายการที่ 6 -->
-    <div class="movie-item">
-        <div class="movie-box">
-            <div class="movie-image">
-                <button autofocus="" class="btn btn-default btn-block btn-lg" onclick="window.location.href='https://main.24playerhd.com/newplaylist/feb4d1236f96a0f6de3f61dd/feb4d1236f96a0f6de3f61dd.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);" type="button"></button>
-            </div>
+    <div class="movie-col">
+        <div class="movie-item">
+            <button class="movie-button" onclick="window.location.href='https://main.24playerhd.com/newplaylist/feb4d1236f96a0f6de3f61dd/feb4d1236f96a0f6de3f61dd.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Girlfriend-2025.jpg);"></button>
+            <p class="movie-title">ตอนที่ EP1</p>
         </div>
-        <center><p>ตอนที่ EP1</p></center>
     </div>
     
     <!-- รายการที่ 7 -->
-    <div class="movie-item">
-        <div class="movie-box">
-            <div class="movie-image">
-                <button autofocus="" class="btn btn-default btn-block btn-lg" onclick="window.location.href='https://main.24playerhd.com/newplaylist/552e1e08f40b974766f2161f/552e1e08f40b974766f2161f.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/Task-2025.jpg);" type="button"></button>
-            </div>
+    <div class="movie-col">
+        <div class="movie-item">
+            <button class="movie-button" onclick="window.location.href='https://main.24playerhd.com/newplaylist/552e1e08f40b974766f2161f/552e1e08f40b974766f2161f.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/Task-2025.jpg);"></button>
+            <p class="movie-title">ตอนที่ EP1</p>
         </div>
-        <center><p>ตอนที่ EP1</p></center>
     </div>
     
     <!-- รายการที่ 8 -->
-    <div class="movie-item">
-        <div class="movie-box">
-            <div class="movie-image">
-                <button autofocus="" class="btn btn-default btn-block btn-lg" onclick="window.location.href='https://main.24playerhd.com/newplaylist/1f0d19d020ff77079a4f99fb/1f0d19d020ff77079a4f99fb.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Runarounds-2025.jpg);" type="button"></button>
-            </div>
+    <div class="movie-col">
+        <div class="movie-item">
+            <button class="movie-button" onclick="window.location.href='https://main.24playerhd.com/newplaylist/1f0d19d020ff77079a4f99fb/1f0d19d020ff77079a4f99fb.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Runarounds-2025.jpg);"></button>
+            <p class="movie-title">ตอนที่ EP8</p>
         </div>
-        <center><p>ตอนที่ EP8</p></center>
     </div>
     
     <!-- รายการที่ 9 -->
-    <div class="movie-item">
-        <div class="movie-box">
-            <div class="movie-image">
-                <button autofocus="" class="btn btn-default btn-block btn-lg" onclick="window.location.href='https://main.24playerhd.com/newplaylist/25ac5537bbdec2e2145765aa/25ac5537bbdec2e2145765aa.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Runarounds-2025.jpg);" type="button"></button>
-            </div>
+    <div class="movie-col">
+        <div class="movie-item">
+            <button class="movie-button" onclick="window.location.href='https://main.24playerhd.com/newplaylist/25ac5537bbdec2e2145765aa/25ac5537bbdec2e2145765aa.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Runarounds-2025.jpg);"></button>
+            <p class="movie-title">ตอนที่ EP7</p>
         </div>
-        <center><p>ตอนที่ EP7</p></center>
     </div>
     
     <!-- รายการที่ 10 -->
-    <div class="movie-item">
-        <div class="movie-box">
-            <div class="movie-image">
-                <button autofocus="" class="btn btn-default btn-block btn-lg" onclick="window.location.href='https://main.24playerhd.com/newplaylist/3820515d3243bdb28ee4893f/3820515d3243bdb28ee4893f.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Runarounds-2025.jpg);" type="button"></button>
-            </div>
+    <div class="movie-col">
+        <div class="movie-item">
+            <button class="movie-button" onclick="window.location.href='https://main.24playerhd.com/newplaylist/3820515d3243bdb28ee4893f/3820515d3243bdb28ee4893f.m3u8'" style="background-image:url(https://www.seriesday-hd.com/wp-content/uploads/2025/09/The-Runarounds-2025.jpg);"></button>
+            <p class="movie-title">ตอนที่ EP6</p>
         </div>
-        <center><p>ตอนที่ EP6</p></center>
     </div>
     
     <!-- เพิ่มรายการที่เหลือทั้งหมดในรูปแบบเดียวกัน -->
